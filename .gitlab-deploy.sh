@@ -32,7 +32,6 @@ command="ls -ltr && \
  cd /home/ubuntu/gablum && \
  git clone https://${gituser}:${gittoken}@gitlab.stackroute.in/gablum/gablum_resources.git -b ${branch} && \
  cd /home/ubuntu/gablum/gablum_resources && \
- echo 'listing things' && \
  ls -ltr && \
  echo 'Deploying the Gablum Application's Resources' && \
  docker-compose -f docker-compose-resources.yml up --build -d --remove-orphans && \
