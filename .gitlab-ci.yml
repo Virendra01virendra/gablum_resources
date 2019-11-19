@@ -1,0 +1,27 @@
+stages:
+    - production
+
+variables:
+    DEPLOY_BRANCH: $CI_COMMIT_REF_NAME
+
+# CD stage
+
+production_deploy:
+    image: ubuntu:latest
+    stage: production
+    tags:
+        - gablum-ci-jobs
+    before_script:
+        #generate ssh key
+        - mkdir -p ~/.ssh
+        - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        - chmod 600 ~/.ssh/id_rsa
+        - 'echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    script:
+        - ls -ltr
+        - /bin/sh .gitlab-deploy.sh
+    environment:
+        name: production
+        url: http://gablum-dev.stackroute.io
+    only:
+        - master
