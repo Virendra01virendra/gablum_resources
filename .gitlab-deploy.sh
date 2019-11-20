@@ -18,6 +18,7 @@ apt-get update && apt-get install -y openssh-client
 
 
 command="ls -ltr && \
+ rm -rf gablum_resources && \
  git clone https://${gituser}:${gittoken}@gitlab.stackroute.in/gablum/gablum_resources.git -b ${branch} && \
  cd /home/ubuntu/gablum_resources && \
  ls -ltr && \
