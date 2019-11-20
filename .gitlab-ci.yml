@@ -14,7 +14,7 @@ production_deploy:
   before_script:
     #generate ssh key
     - mkdir -p ~/.ssh
-    - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - echo -e "$DEPLOY_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - 'echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
@@ -22,6 +22,6 @@ production_deploy:
     - /bin/sh .gitlab-deploy.sh
   environment:
     name: production
-    url: http://gablum-dev.stackroute.io
+    url: https://gablum-dev.stackroute.io
   only:
     - master
